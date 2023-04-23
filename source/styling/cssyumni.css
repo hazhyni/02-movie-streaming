@@ -1,0 +1,53 @@
+@import "navbar.css";
+@import "listfilm.css";
+@import "searchbar.css";
+* {
+  background-color: #0e0b16 !important;
+}
+
+.itemcarousel {
+  margin-left: 200px;
+}
+.cardcustom {
+  padding: 10px;
+  float: left !important;
+  width: 20% !important;
+  margin: 20px;
+}
+
+.card-text {
+  color: #e7dfdd;
+}
+
+#welcome {
+  color: #e7dfdd !important;
+}
+
+#welmes {
+  height: 90px;
+  color: #e7dfdd !important;
+  background: #4717f6 !important;
+}
+
+.judsinop {
+  height: 20px !important;
+}
+
+#waktu {
+  font-size: 12px !important;
+}
+
+.badge {
+  font-size: 24px !important;
+  background: #a239ca !important;
+}
+
+.filmprev {
+  margin-top: 80px;
+  width: 100% !important;
+}
+
+.tombol {
+  margin-top: 30px;
+  margin-bottom: 17px;
+}
