@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Film Streaming</title>
-    <link rel="stylesheet" href="./style.css" />
 
     <!-- Font Awesome -->
     <link
@@ -18,139 +17,128 @@
 
     <!-- Bootstrqp -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="asset/bootstrap-4.5.0-dist/css/bootstrap.min.css"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
     />
   </head>
 
   <body>
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="./index.html">YuMovie</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Recommended</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Popular</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Top Rated</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Categories
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-gun"></i> Action</a
-              >
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-mask"></i> Comedy</a
-              >
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-house-tsunami"></i> Drama</a
-              >
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-brain"></i> Thriller</a
-              >
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-heart"></i> Romance</a
-              >
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item text-white" href="#"
-                ><i class="fa fa-wand-magic-sparkles"></i> New Release</a
-              >
-            </div>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-          <!-- untuk membuat float right link-->
-          <form class="form-inline my-2 my-lg-0">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fa fa-search"></i>
-                </div>
-              </div>
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Search
-              </button>
-            </div>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">YuMovie</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-film" aria-hidden="true"></i>
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <form class="d-flex pt-3 pb-3" role="search">
+            <input
+              class="form-control me-2 bg-dark"
+              type="search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
           </form>
-          <li class="nav-item float-right ml-2">
-            <button type="button" class="btn btn-primary">LOGIN</button>
-          </li>
-        </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Recommended</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Popular</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Top Rated</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Category
+              </a>
+              <ul class="dropdown-menu bg-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Drama</a></li>
+                <li><a class="dropdown-item" href="#">Romance</a></li>
+                <li><a class="dropdown-item" href="#">Thriller</a></li>
+                <li><a class="dropdown-item" href="#">Horror</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Submit Request</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
     <!-- The  End of Navbar -->
 
-    <!-- New Main -->
-
-    <div class="jumbotron jumbotron-fluid" id="welcome">
-      <div class="container">
-        <h1 class="display-4">Welcome To YuMovie</h1>
-        <p class="lead">The Best Film Portal</p>
-
-        <form action="">
-          <label class="sr-only" for="">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </div>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              id=""
-              placeholder="Cari Judul Film, TV Movies..."
-            />
-          </div>
-        </form>
+    <!-- Introduction -->
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="/img/thumbnailpenthouse.jpg" class=" w-100 d-block" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/img/thumbnail.jpg" class=" w-100 d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/thumbnailtwenty.jpg" class=" w-100 d-block" alt="...">
+        </div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
-    <!-- CONTENT -->
+      <div class="container-fluid pt-5 shadow-lg">
+        <div class="card">
+          <h1 class="display-4">Welcome To YuMovie</h1>
+          <p class="lead">The Best Film Portal</p>
+          
+          <form action="">
+            <label class="sr-only" for="">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+              </div>
+              <input type="text" class="form-control" id="" placeholder="Cari Judul Film, TV Movies..." />
+            </div>
+          </form>
+        </div>
+      </div>
+    <!-- Introduction -->
 
     <!-- Jumbotron Judul -->
 
@@ -360,6 +348,12 @@
     <!-- END OF CONTENT -->
 
     <!-- Script -->
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
     <script>
       $(document).ready(function () {
         $(".carousel").carousel();
@@ -367,7 +361,6 @@
     </script>
     <script src="asset/jquery-3.5.1.slim.min.js"></script>
     <script src="asset/popper.min.js"></script>
-    <script src="asset/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <!-- End of The Script -->
   </body>
 </html>
