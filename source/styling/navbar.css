@@ -1,10 +1,16 @@
-* {
+nav ul li a {
   color: #fff !important;
 }
-nav {
-  background: #0e0b16 !important;
+
+.navbar-brand {
+  background: #000 !important;
 }
 
-input {
-  color: white !important;
+.navbar {
+  box-shadow: 0 2px 4px rgba(48, 47, 47, 0.1) !important;
+}
+
+.navbar.scrolled {
+  background-color: #000 !important;
+  color: #000 !important;
 }
