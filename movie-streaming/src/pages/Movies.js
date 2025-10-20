@@ -1,125 +1,43 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import Button from "../components/Button";
+import React, { useState } from "react";
 import moviesData from "../data/movies.json";
+import VideoPlayer from "../components/VideoPlayer";
+import MovieDetails from "../components/MovieDetails";
+import Button from "../components/Button";
 import "../styles/Movies.css";
 
-const Movies = ({ openSearch = false }) => {
+const Movies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [selectedYear, setSelectedYear] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const searchInputRef = useRef(null);
+  const [playingMovie, setPlayingMovie] = useState(null);
+  const [detailMovie, setDetailMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [expandedCard, setExpandedCard] = useState(null);
 
   const { movies, genres } = moviesData;
 
-  const years = [
+  // Simulate loading
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const years = React.useMemo(() => [
     "All",
-    "2022",
-    "2021",
-    "2019",
-    "2018",
-    "2014",
-    "2010",
-    "2008",
-    "1994",
-  ];
+    ...Array.from(new Set(movies.map(movie => movie.year)))
+      .sort((a, b) => b - a)
+      .map(year => year.toString())
+  ], [movies]);
 
-  const handleSearch = useCallback(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      return;
-    }
 
-    setIsSearching(true);
-    setTimeout(() => {
-      const query = searchQuery.toLowerCase().trim();
-      let results = movies.filter((movie) => {
-        return (
-          movie.title.toLowerCase().includes(query) ||
-          movie.description.toLowerCase().includes(query) ||
-          movie.director.toLowerCase().includes(query) ||
-          movie.categories.some((cat) =>
-            cat.toLowerCase().includes(query)
-          ) ||
-          movie.cast.some((actor) =>
-            actor.toLowerCase().includes(query)
-          ) ||
-          movie.year.toString().includes(query)
-        );
-      });
 
-      // Sort by relevance
-      results.sort((a, b) => {
-        const aTitle = a.title.toLowerCase().includes(query) ? 1 : 0;
-        const bTitle = b.title.toLowerCase().includes(query) ? 1 : 0;
-        if (aTitle !== bTitle) return bTitle - aTitle;
-        
-        return b.rating - a.rating;
-      });
-
-      setSearchResults(results);
-      setIsSearching(false);
-    }, 200);
-  }, [searchQuery, movies]);
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
-
-  useEffect(() => {
-    if (searchQuery || selectedGenre !== "All") {
-      handleSearch();
-    }
-  }, [selectedGenre, searchQuery, handleSearch]);
-
-  useEffect(() => {
-    if (openSearch) {
-      setIsSearchOpen(true);
-      setTimeout(() => searchInputRef.current?.focus(), 100);
-    }
-  }, [openSearch]);
-
-  useEffect(() => {
-    // Reset openSearch state after component mounts
-    return () => {
-      if (openSearch) {
-        // This will be handled by parent component
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setIsSearchOpen(false);
-        setSearchQuery("");
-        setSearchResults([]);
-      }
-    };
-
-    const handleOpenSearch = () => {
-      setIsSearchOpen(true);
-      setTimeout(() => searchInputRef.current?.focus(), 100);
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("openSearchModal", handleOpenSearch);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("openSearchModal", handleOpenSearch);
-    };
-  }, []);
-
-  const filteredMovies = movies.filter((movie) => {
-    return (
-      (selectedGenre === "All" || movie.genre === selectedGenre) &&
-      (selectedYear === "All" || movie.year.toString() === selectedYear)
-    );
-  });
+  const filteredMovies = React.useMemo(() => 
+    movies.filter((movie) => {
+      return (
+        (selectedGenre === "All" || movie.genre === selectedGenre) &&
+        (selectedYear === "All" || movie.year.toString() === selectedYear)
+      );
+    }), [movies, selectedGenre, selectedYear]
+  );
 
   return (
     <div className="movies-page">
@@ -135,12 +53,12 @@ const Movies = ({ openSearch = false }) => {
             value={selectedGenre}
             onChange={(e) => setSelectedGenre(e.target.value)}
           >
+            <option value="All">All Genres</option>
             {genres.map((genre) => (
               <option key={genre.id} value={genre.name}>
                 {genre.name} ({genre.count})
               </option>
             ))}
-            <option value="All">All Genres</option>
           </select>
         </div>
         <div className="filter-group">
@@ -161,93 +79,104 @@ const Movies = ({ openSearch = false }) => {
         </div>
       </div>
 
-      {isSearchOpen && (
-        <div className="search-modal" onClick={() => setIsSearchOpen(false)}>
-          <div className="search-modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="search-modal-header">
-              <div className="search-input-container">
-                <span className="search-icon">🔍</span>
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="Search by title, actor, director, year..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  className="search-modal-input"
-                />
-                <button
-                  className="close-search"
-                  onClick={() => setIsSearchOpen(false)}
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-
-            {searchResults.length > 0 && (
-              <div className="search-modal-results">
-                {searchResults.slice(0, 6).map((movie) => (
-                  <div key={movie.id} className="search-result-item">
-                    <img
-                      src={movie.poster}
-                      alt={movie.title}
-                      className="result-thumb"
-                    />
-                    <div className="result-details">
-                      <h4>{movie.title}</h4>
-                      <div className="result-meta-inline">
-                        <span>{movie.year}</span>
-                        <span>{movie.genre}</span>
-                        <span>⭐ {movie.rating}</span>
-                      </div>
-                    </div>
-                    <Button variant="ghost" size="small" icon="▶">
-                      Play
-                    </Button>
-                  </div>
-                ))}
-                {searchResults.length > 6 && (
-                  <div className="more-results">
-                    +{searchResults.length - 6} more results
-                  </div>
-                )}
-              </div>
-            )}
-
-            {(searchQuery || selectedGenre !== "All") &&
-              searchResults.length === 0 &&
-              !isSearching && (
-                <div className="no-results-modal">
-                  <span className="no-results-icon">🎬</span>
-                  <p>No movies found</p>
-                </div>
-              )}
-          </div>
-        </div>
+      {detailMovie && (
+        <MovieDetails 
+          movie={detailMovie}
+          onPlay={setPlayingMovie}
+          onClose={() => setDetailMovie(null)}
+        />
       )}
 
-      <div className="movies-grid">
-        {filteredMovies.map((movie) => (
-          <div key={movie.id} className="movie-card">
-            <div className="movie-poster">
-              <img src={movie.poster} alt={movie.title} />
-              <div className="movie-overlay">
-                <button className="play-btn">▶</button>
-                <button className="info-btn">ℹ</button>
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading movies...</p>
+        </div>
+      ) : filteredMovies.length === 0 ? (
+        <div className="empty-state">
+          <div className="empty-icon">🎬</div>
+          <h3>No movies found</h3>
+          <p>Try adjusting your filters to see more results</p>
+          <Button 
+            variant="primary"
+            onClick={() => {
+              setSelectedGenre("All");
+              setSelectedYear("All");
+            }}
+          >
+            Reset Filters
+          </Button>
+        </div>
+      ) : (
+        <div className="movies-grid">
+          {filteredMovies.map((movie) => (
+            <div key={movie.id} className="movie-card">
+              <div className="movie-poster">
+                <img 
+                  src={movie.poster} 
+                  alt={movie.title}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src = '/placeholder-movie.jpg';
+                    e.target.onerror = null;
+                  }}
+                />
+                <div className="movie-overlay">
+                  <Button 
+                    variant="circular"
+                    onClick={() => setPlayingMovie(movie)}
+                    title="Play Movie"
+                    icon="▶"
+                  />
+                  <Button 
+                    variant="circular"
+                    className="btn-info"
+                    onClick={() => setDetailMovie(movie)}
+                    title="Movie Details"
+                    icon="ℹ"
+                  />
+                </div>
+              </div>
+              <div className="movie-info">
+                <div className="title-row">
+                  <h3 title={movie.title}>{movie.title}</h3>
+                  <span className="rating-badge">{movie.rating}</span>
+                </div>
+                <div className="movie-meta">
+                  <div className="meta-row">
+                    <span className="genre">{movie.genre}</span>
+                    <span className="year">{movie.year}</span>
+                  </div>
+                  <div className="description-container">
+                    <p className={`movie-description ${expandedCard === movie.id ? 'expanded' : ''}`}>
+                      {movie.description}
+                    </p>
+                    {movie.description.length > 100 && (
+                      <button 
+                        className="description-toggle"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedCard(expandedCard === movie.id ? null : movie.id);
+                        }}
+                      >
+                        {expandedCard === movie.id ? 'Show less' : 'Detail...'}
+                      </button>
+                    )}
+                  </div>
+                  <div className="meta-row">
+                    <span className="likes">❤️ {movie.loves}</span>
+                    <span className="views">👁️ {(movie.views / 1000000).toFixed(1)}M</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="movie-info">
-              <h3>{movie.title}</h3>
-              <div className="movie-meta">
-                <span className="genre">{movie.genre}</span>
-                <span className="year">{movie.year}</span>
-                <span className="rating">⭐ {movie.rating}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+      <VideoPlayer 
+        movie={playingMovie}
+        onClose={() => setPlayingMovie(null)}
+      />
     </div>
   );
 };

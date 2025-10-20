@@ -76,7 +76,7 @@
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  min-width: 180px;
+  min-width: 220px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   z-index: 1000;
   margin-top: 0.8rem;
@@ -84,12 +84,66 @@
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
 .dropdown-content.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.dropdown-header {
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e50914;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-item {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.dropdown-item.all-movies {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.genre-icon {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.genre-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.genre-name {
+  font-weight: 600;
+}
+
+.genre-count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .dropdown-content button {
@@ -106,6 +160,16 @@
   position: relative;
 }
 
+.dropdown-item:hover {
+  background: rgba(229, 9, 20, 0.15);
+  color: #e50914;
+  transform: translateX(4px);
+}
+
+.dropdown-item:hover .genre-count {
+  color: rgba(229, 9, 20, 0.8);
+}
+
 .dropdown-content button:hover {
   background: rgba(229, 9, 20, 0.15);
   color: #e50914;
@@ -118,6 +182,22 @@
 
 .dropdown-content button:last-child {
   border-radius: 0 0 12px 12px;
+}
+
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #e50914;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.dropdown-item:hover::before {
+  transform: scaleY(1);
 }
 
 .dropdown-content button::before {

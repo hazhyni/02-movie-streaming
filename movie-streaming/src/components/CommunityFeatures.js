@@ -62,15 +62,15 @@ const CommunityFeatures = () => {
                 </div>
                 <div className="chat-messages">
                   <div className="message slide-up">
-                    <img src="https://via.placeholder.com/24" alt="User" />
+                    <div className="user-avatar">👨</div>
                     <span>This scene gives me chills! 🔥</span>
                   </div>
                   <div className="message slide-up delay-1">
-                    <img src="https://via.placeholder.com/24" alt="User" />
+                    <div className="user-avatar">👩</div>
                     <span>Tony Stark is the GOAT 🐐</span>
                   </div>
                   <div className="message slide-up delay-2">
-                    <img src="https://via.placeholder.com/24" alt="User" />
+                    <div className="user-avatar">🧑</div>
                     <span>I'm crying 😭😭😭</span>
                   </div>
                 </div>

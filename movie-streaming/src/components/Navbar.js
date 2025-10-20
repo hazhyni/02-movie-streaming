@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import moviesData from "../data/movies.json";
 import "../styles/Navbar.css";
 
 const Navbar = ({ currentPage, setCurrentPage }) => {
@@ -57,39 +58,52 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               Genre ▼
             </button>
             <div className={`dropdown-content ${isDropdownOpen ? "show" : ""}`}>
+              <div className="dropdown-header">
+                <span>🎬 Browse by Genre</span>
+              </div>
               <button
+                className="dropdown-item all-movies"
                 onClick={() => {
                   setCurrentPage("movies");
                   setIsMenuOpen(false);
                   setIsDropdownOpen(false);
                 }}
               >
-                Movies
+                <span className="genre-icon">🍿</span>
+                <div className="genre-info">
+                  <span className="genre-name">All Movies</span>
+                  <span className="genre-count">{moviesData.movies.length} movies</span>
+                </div>
               </button>
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsDropdownOpen(false);
-                }}
-              >
-                TV Series
-              </button>
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsDropdownOpen(false);
-                }}
-              >
-                Documentaries
-              </button>
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsDropdownOpen(false);
-                }}
-              >
-                Anime
-              </button>
+              {moviesData.genres.map(genre => {
+                const genreEmojis = {
+                  'Action': '💥',
+                  'Drama': '🎭',
+                  'Sci-Fi': '🚀',
+                  'Adventure': '🗺️',
+                  'Superhero': '🦸',
+                  'Thriller': '😱',
+                  'Crime': '🔍',
+                  'Comedy': '😂'
+                };
+                return (
+                  <button
+                    key={genre.id}
+                    className="dropdown-item"
+                    onClick={() => {
+                      setCurrentPage("movies");
+                      setIsMenuOpen(false);
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    <span className="genre-icon">{genreEmojis[genre.name] || '🎬'}</span>
+                    <div className="genre-info">
+                      <span className="genre-name">{genre.name}</span>
+                      <span className="genre-count">{genre.count} movies</span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
           <button className="navbar-item">Rate</button>
