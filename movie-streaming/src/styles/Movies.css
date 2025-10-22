@@ -14,7 +14,7 @@
 .movies-header h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #fff, #e50914);
+  background: linear-gradient(45deg, #fff, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,45 +65,45 @@
 
 .filter-group select:hover {
   background: rgba(255, 255, 255, 0.15);
-  border-color: #e50914;
+  border-color: #8b5cf6;
 }
 
 .filter-group select:focus {
   outline: none;
-  border-color: #e50914;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .search-trigger {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(229, 9, 20, 0.1);
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 20px;
   padding: 0.5rem 1rem;
-  color: #e50914;
+  color: #8b5cf6;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.9rem;
 }
 
 .search-trigger:hover {
-  background: rgba(229, 9, 20, 0.2);
+  background: rgba(139, 92, 246, 0.2);
   transform: translateY(-2px);
 }
 
 .search-shortcut {
-  background: rgba(229, 9, 20, 0.2);
+  background: rgba(139, 92, 246, 0.2);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.7rem;
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .results-count {
   margin-left: auto;
-  color: #e50914;
+  color: #8b5cf6;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -269,8 +269,8 @@
 .movie-card:hover {
   transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(229, 9, 20, 0.4);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(229, 9, 20, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(139, 92, 246, 0.2);
 }
 
 .movie-poster {
@@ -372,7 +372,7 @@
 .description-toggle {
   background: none;
   border: none;
-  color: #e50914;
+  color: #8b5cf6;
   font-size: 0.75rem;
   cursor: pointer;
   padding: 0.2rem 0;
@@ -381,7 +381,7 @@
 }
 
 .description-toggle:hover {
-  color: #ff1744;
+  color: #a855f7;
   text-decoration: underline;
 }
 
@@ -399,13 +399,13 @@
 }
 
 .genre {
-  background: rgba(229, 9, 20, 0.2);
-  color: #e50914;
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .year {
@@ -441,7 +441,7 @@
   width: 50px;
   height: 50px;
   border: 4px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #e50914;
+  border-left: 4px solid #8b5cf6;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -497,7 +497,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(229, 9, 20, 0.1));
+  background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
@@ -511,7 +511,7 @@
 /* Better focus states */
 .filter-group select:focus,
 .reset-filters-btn:focus {
-  outline: 2px solid #e50914;
+  outline: 2px solid #8b5cf6;
   outline-offset: 2px;
 }
 

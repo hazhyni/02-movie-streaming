@@ -16,10 +16,10 @@
 }
 
 .footer-brand h3 {
-  color: #e50914;
+  color: #8b5cf6;
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .footer-brand p {
@@ -48,7 +48,7 @@
 }
 
 .footer-column a:hover {
-  color: #e50914;
+  color: #8b5cf6;
 }
 
 .social-links {
@@ -69,7 +69,7 @@
 }
 
 .social-links a:hover {
-  background: #e50914;
+  background: #8b5cf6;
   transform: translateY(-3px);
 }
 

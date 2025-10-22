@@ -1,0 +1,69 @@
+{
+  "discussions": [
+    {
+      "id": 1,
+      "user": "MovieFan2024",
+      "avatar": "🎬",
+      "movieId": 1,
+      "movie": "Avengers: Endgame",
+      "title": "The ending still gives me chills!",
+      "content": "Just rewatched Endgame and that final battle scene is absolutely epic. What's your favorite moment?",
+      "likes": 24,
+      "replies": 8,
+      "time": "2 hours ago",
+      "liked": false
+    },
+    {
+      "id": 2,
+      "user": "CinemaLover",
+      "avatar": "🍿",
+      "movieId": 2,
+      "movie": "Joker",
+      "title": "Joaquin Phoenix's performance was incredible",
+      "content": "The way he portrayed Arthur's transformation was haunting. Definitely deserved that Oscar!",
+      "likes": 31,
+      "replies": 12,
+      "time": "4 hours ago",
+      "liked": true
+    },
+    {
+      "id": 3,
+      "user": "SciFiGeek",
+      "avatar": "🚀",
+      "movieId": 6,
+      "movie": "Dune",
+      "title": "Can't wait for Part Two!",
+      "content": "The visuals and soundtrack were absolutely stunning. Denis Villeneuve is a master filmmaker.",
+      "likes": 18,
+      "replies": 5,
+      "time": "6 hours ago",
+      "liked": false
+    },
+    {
+      "id": 4,
+      "user": "ActionHero",
+      "avatar": "🦸",
+      "movieId": 5,
+      "movie": "Spider-Man: No Way Home",
+      "title": "Best Spider-Man movie ever!",
+      "content": "Seeing all three Spider-Men together was a dream come true. The multiverse concept was executed perfectly!",
+      "likes": 42,
+      "replies": 15,
+      "time": "1 day ago",
+      "liked": false
+    },
+    {
+      "id": 5,
+      "user": "FilmCritic",
+      "avatar": "🎥",
+      "movieId": 8,
+      "movie": "Inception",
+      "title": "Nolan's masterpiece",
+      "content": "The layers of dreams within dreams still blow my mind. This movie gets better with every rewatch.",
+      "likes": 67,
+      "replies": 23,
+      "time": "2 days ago",
+      "liked": true
+    }
+  ]
+}

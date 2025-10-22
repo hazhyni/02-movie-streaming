@@ -3,6 +3,10 @@ import Navbar from "./components/Navbar";
 import Welcome from "./pages/Welcome";
 import CommunityFeatures from "./components/CommunityFeatures";
 import Movies from "./pages/Movies";
+import Rate from "./pages/Rate";
+import Community from "./pages/Community";
+import Rewards from "./pages/Rewards";
+import About from "./pages/About";
 import GlobalSearch from "./components/GlobalSearch";
 import Footer from "./components/Footer";
 import "./App.css";
@@ -14,6 +18,14 @@ function App() {
     switch (currentPage) {
       case "movies":
         return <Movies />;
+      case "rate":
+        return <Rate />;
+      case "community":
+        return <Community />;
+      case "rewards":
+        return <Rewards />;
+      case "about":
+        return <About />;
       default:
         return (
           <>

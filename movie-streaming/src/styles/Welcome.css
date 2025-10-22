@@ -28,7 +28,7 @@
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #fff, #e50914);
+  background: linear-gradient(45deg, #fff, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,14 +57,14 @@
 }
 
 .btn-primary {
-  background: #e50914;
+  background: #8b5cf6;
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: #f40612;
+  background: #a855f7;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.3);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
 }
 
 .btn-secondary {
@@ -235,7 +235,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  border: 2px solid #e50914;
+  border: 2px solid #8b5cf6;
   border-radius: 50%;
   animation: waveExpand 3s ease-out infinite;
   left: 50%;
@@ -275,10 +275,10 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #e50914;
+  background: #8b5cf6;
   border-radius: 50%;
   animation: dotTravel 3s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
 }
 
 .dot-1 { animation-delay: 0s; }
@@ -308,10 +308,10 @@
 
 .download-fill {
   height: 100%;
-  background: linear-gradient(90deg, #e50914, #f40612);
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
   border-radius: 6px;
   animation: downloadProgress 3s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
 }
 
 .download-percent {
@@ -320,7 +320,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.7rem;
-  color: #e50914;
+  color: #8b5cf6;
   font-weight: bold;
   animation: textPulse 3s ease-in-out infinite;
 }
@@ -385,7 +385,7 @@
 }
 
 .selector-dot.active {
-  background: #e50914;
+  background: #8b5cf6;
 }
 
 .selector-dot:nth-child(1) { animation-delay: 0s; }
@@ -434,7 +434,7 @@
 
 @keyframes phoneGlow {
   0%, 100% { filter: brightness(1); transform: scale(1); }
-  50% { filter: brightness(1.3) drop-shadow(0 0 15px #e50914); transform: scale(1.05); }
+  50% { filter: brightness(1.3) drop-shadow(0 0 15px #8b5cf6); transform: scale(1.05); }
 }
 
 @keyframes downloadProgress {
@@ -452,19 +452,19 @@
 
 @keyframes profileGlow {
   0%, 100% { 
-    filter: brightness(1) drop-shadow(0 0 0px #e50914); 
+    filter: brightness(1) drop-shadow(0 0 0px #8b5cf6); 
     transform: translateX(-50%) scale(1); 
   }
   25% { 
-    filter: brightness(1.2) drop-shadow(0 0 8px #e50914); 
+    filter: brightness(1.2) drop-shadow(0 0 8px #8b5cf6); 
     transform: translateX(-50%) scale(1.03); 
   }
   50% { 
-    filter: brightness(1.4) drop-shadow(0 0 15px #e50914); 
+    filter: brightness(1.4) drop-shadow(0 0 15px #8b5cf6); 
     transform: translateX(-50%) scale(1.08); 
   }
   75% { 
-    filter: brightness(1.2) drop-shadow(0 0 8px #e50914); 
+    filter: brightness(1.2) drop-shadow(0 0 8px #8b5cf6); 
     transform: translateX(-50%) scale(1.03); 
   }
 }
@@ -490,21 +490,21 @@
     transform: scale(1);
   }
   5%, 80% { 
-    background: #e50914; 
+    background: #8b5cf6; 
     transform: scale(1.4);
-    box-shadow: 0 0 8px #e50914;
+    box-shadow: 0 0 8px #8b5cf6;
   }
   10%, 75% { 
-    background: #e50914; 
+    background: #8b5cf6; 
     transform: scale(1.2);
-    box-shadow: 0 0 4px #e50914;
+    box-shadow: 0 0 4px #8b5cf6;
   }
 }
 
 .feature h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #e50914;
+  color: #8b5cf6;
 }
 
 .feature p {

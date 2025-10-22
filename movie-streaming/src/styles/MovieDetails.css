@@ -83,7 +83,7 @@
 }
 
 .rating {
-  background: rgba(229, 9, 20, 0.2) !important;
+  background: rgba(139, 92, 246, 0.2) !important;
   color: #ffd700;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .movie-cast strong, .movie-director strong {
-  color: #e50914;
+  color: #8b5cf6;
 }
 
 .movie-actions {
@@ -111,7 +111,7 @@
 }
 
 .play-btn-large {
-  background: #e50914;
+  background: #8b5cf6;
   color: #fff;
   border: none;
   padding: 1rem 2rem;
@@ -126,9 +126,9 @@
 }
 
 .play-btn-large:hover {
-  background: #f40612;
+  background: #a855f7;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
 }
 
 .add-list-btn {

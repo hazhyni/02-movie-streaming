@@ -106,10 +106,42 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               })}
             </div>
           </div>
-          <button className="navbar-item">Rate</button>
-          <button className="navbar-item">Community</button>
-          <button className="navbar-item">Rewards</button>
-          <button className="navbar-item">About</button>
+          <button 
+            className={`navbar-item ${currentPage === "rate" ? "active" : ""}`}
+            onClick={() => {
+              setCurrentPage("rate");
+              setIsMenuOpen(false);
+            }}
+          >
+            Rate
+          </button>
+          <button 
+            className={`navbar-item ${currentPage === "community" ? "active" : ""}`}
+            onClick={() => {
+              setCurrentPage("community");
+              setIsMenuOpen(false);
+            }}
+          >
+            Community
+          </button>
+          <button 
+            className={`navbar-item ${currentPage === "rewards" ? "active" : ""}`}
+            onClick={() => {
+              setCurrentPage("rewards");
+              setIsMenuOpen(false);
+            }}
+          >
+            Rewards
+          </button>
+          <button 
+            className={`navbar-item ${currentPage === "about" ? "active" : ""}`}
+            onClick={() => {
+              setCurrentPage("about");
+              setIsMenuOpen(false);
+            }}
+          >
+            About
+          </button>
         </div>
 
         <div className="navbar-actions">

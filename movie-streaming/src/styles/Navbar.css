@@ -19,11 +19,11 @@
 }
 
 .navbar-brand h2 {
-  color: #e50914;
+  color: #8b5cf6;
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .navbar-menu {
@@ -44,7 +44,7 @@
 }
 
 .navbar-item:hover, .navbar-item.active {
-  color: #e50914;
+  color: #8b5cf6;
   transform: translateY(-2px);
 }
 
@@ -55,7 +55,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #e50914;
+  background: #8b5cf6;
   transition: width 0.3s ease;
 }
 
@@ -96,7 +96,7 @@
 .dropdown-header {
   padding: 0.8rem 1.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: #e50914;
+  color: #8b5cf6;
   font-weight: 600;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -122,7 +122,7 @@
 
 .dropdown-item.all-movies {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(229, 9, 20, 0.1);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .genre-icon {
@@ -161,18 +161,18 @@
 }
 
 .dropdown-item:hover {
-  background: rgba(229, 9, 20, 0.15);
-  color: #e50914;
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
   transform: translateX(4px);
 }
 
 .dropdown-item:hover .genre-count {
-  color: rgba(229, 9, 20, 0.8);
+  color: rgba(139, 92, 246, 0.8);
 }
 
 .dropdown-content button:hover {
-  background: rgba(229, 9, 20, 0.15);
-  color: #e50914;
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
   transform: translateX(4px);
 }
 
@@ -191,7 +191,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #e50914;
+  background: #8b5cf6;
   transform: scaleY(0);
   transition: transform 0.2s ease;
 }
@@ -207,7 +207,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #e50914;
+  background: #8b5cf6;
   transform: scaleY(0);
   transition: transform 0.2s ease;
 }
@@ -251,8 +251,8 @@
 
 .search-box:focus-within {
   background: rgba(255, 255, 255, 0.15);
-  border-color: #e50914;
-  box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
 
 .search-box input {
@@ -290,7 +290,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid #e50914;
+  border: 2px solid #8b5cf6;
   cursor: pointer;
   transition: transform 0.3s ease;
 }

@@ -1,0 +1,76 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "movieId": 1,
+      "user": "MovieFan2024",
+      "avatar": "🎬",
+      "rating": 9.5,
+      "title": "Epic conclusion to the MCU saga",
+      "content": "Avengers: Endgame delivers an emotional and satisfying conclusion to over a decade of storytelling. The final battle is absolutely spectacular.",
+      "likes": 156,
+      "helpful": 89,
+      "date": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "movieId": 2,
+      "user": "CinemaLover",
+      "avatar": "🍿",
+      "rating": 9.0,
+      "title": "Joaquin Phoenix's masterclass performance",
+      "content": "A haunting portrayal of mental illness and society's failures. Phoenix completely transforms into the character with incredible depth.",
+      "likes": 203,
+      "helpful": 145,
+      "date": "2024-01-12"
+    },
+    {
+      "id": 3,
+      "movieId": 6,
+      "user": "SciFiGeek",
+      "avatar": "🚀",
+      "rating": 8.5,
+      "title": "Visually stunning sci-fi masterpiece",
+      "content": "Denis Villeneuve brings Frank Herbert's complex world to life with breathtaking visuals and Hans Zimmer's incredible score.",
+      "likes": 178,
+      "helpful": 112,
+      "date": "2024-01-10"
+    },
+    {
+      "id": 4,
+      "movieId": 5,
+      "user": "ActionHero",
+      "avatar": "🦸",
+      "rating": 9.2,
+      "title": "Multiverse done right",
+      "content": "Seeing all three Spider-Men together was pure magic. The nostalgia factor combined with great storytelling makes this special.",
+      "likes": 267,
+      "helpful": 198,
+      "date": "2024-01-08"
+    },
+    {
+      "id": 5,
+      "movieId": 8,
+      "user": "FilmCritic",
+      "avatar": "🎥",
+      "rating": 9.8,
+      "title": "Nolan's mind-bending masterpiece",
+      "content": "Inception is a complex, layered narrative that rewards multiple viewings. The practical effects and cinematography are outstanding.",
+      "likes": 312,
+      "helpful": 234,
+      "date": "2024-01-05"
+    },
+    {
+      "id": 6,
+      "movieId": 3,
+      "user": "TopGunFan",
+      "avatar": "✈️",
+      "rating": 8.8,
+      "title": "Cruise delivers again",
+      "content": "A worthy sequel that honors the original while bringing modern thrills. The aerial sequences are absolutely breathtaking.",
+      "likes": 189,
+      "helpful": 134,
+      "date": "2024-01-03"
+    }
+  ]
+}
