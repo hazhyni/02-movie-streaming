@@ -63,13 +63,16 @@ const Navbar = ({ currentPage, setCurrentPage, selectedGenre, setSelectedGenre }
           >
             Home
           </button>
-          <div className="navbar-dropdown" onMouseLeave={() => window.innerWidth > 768 && setIsDropdownOpen(false)}>
+          <div 
+            className="navbar-dropdown" 
+            onMouseEnter={() => window.innerWidth > 768 && setIsDropdownOpen(true)}
+            onMouseLeave={() => window.innerWidth > 768 && setIsDropdownOpen(false)}
+          >
             <button
               className={`navbar-item ${
                 currentPage === "movies" ? "active" : ""
               }`}
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              onMouseEnter={() => window.innerWidth > 768 && setIsDropdownOpen(true)}
+              onClick={() => window.innerWidth <= 768 && setIsDropdownOpen(!isDropdownOpen)}
               aria-expanded={isDropdownOpen}
               aria-haspopup="true"
             >

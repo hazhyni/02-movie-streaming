@@ -5,13 +5,22 @@ import MovieDetails from "../components/MovieDetails";
 import Button from "../components/Button";
 import "../styles/Movies.css";
 
-const Movies = () => {
-  const [selectedGenre, setSelectedGenre] = useState("All");
+const Movies = ({ selectedGenre: propSelectedGenre, setSelectedGenre: propSetSelectedGenre }) => {
+  const [selectedGenre, setSelectedGenre] = useState(propSelectedGenre || "All");
   const [selectedYear, setSelectedYear] = useState("All");
+
+  // Update local state when prop changes
+  React.useEffect(() => {
+    if (propSelectedGenre !== undefined) {
+      setSelectedGenre(propSelectedGenre || "All");
+    }
+  }, [propSelectedGenre]);
   const [playingMovie, setPlayingMovie] = useState(null);
   const [detailMovie, setDetailMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedCard, setExpandedCard] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 8;
 
   const { movies, genres } = moviesData;
 
@@ -39,6 +48,14 @@ const Movies = () => {
     }), [movies, selectedGenre, selectedYear]
   );
 
+  const totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
+  const startIndex = (currentPage - 1) * moviesPerPage;
+  const currentMovies = filteredMovies.slice(startIndex, startIndex + moviesPerPage);
+
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedGenre, selectedYear]);
+
   return (
     <div className="movies-page">
       <div className="movies-header">
@@ -51,7 +68,13 @@ const Movies = () => {
           <label>Genre:</label>
           <select
             value={selectedGenre}
-            onChange={(e) => setSelectedGenre(e.target.value)}
+            onChange={(e) => {
+              const newGenre = e.target.value;
+              setSelectedGenre(newGenre);
+              if (propSetSelectedGenre) {
+                propSetSelectedGenre(newGenre === "All" ? null : newGenre);
+              }
+            }}
           >
             <option value="All">All Genres</option>
             {genres.map((genre) => (
@@ -76,6 +99,7 @@ const Movies = () => {
         </div>
         <div className="results-count">
           {filteredMovies.length} movies found
+          {totalPages > 1 && ` • Page ${currentPage} of ${totalPages}`}
         </div>
       </div>
 
@@ -108,8 +132,36 @@ const Movies = () => {
           </Button>
         </div>
       ) : (
-        <div className="movies-grid">
-          {filteredMovies.map((movie) => (
+        <>
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button 
+                className="pagination-btn" 
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                ‹ Previous
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+              <button 
+                className="pagination-btn" 
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+              >
+                Next ›
+              </button>
+            </div>
+          )}
+          <div className="movies-grid">
+          {currentMovies.map((movie) => (
             <div key={movie.id} className="movie-card">
               <div className="movie-poster">
                 <img 
@@ -168,10 +220,42 @@ const Movies = () => {
                     <span className="views">👁️ {(movie.views / 1000000).toFixed(1)}M</span>
                   </div>
                 </div>
+                <div className="movie-pagination">
+                  <span className="movie-number">{filteredMovies.indexOf(movie) + 1}</span>
+                  <span className="movie-total">of {filteredMovies.length}</span>
+                </div>
               </div>
             </div>
           ))}
-        </div>
+          </div>
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button 
+                className="pagination-btn" 
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                ‹ Previous
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+              <button 
+                className="pagination-btn" 
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+              >
+                Next ›
+              </button>
+            </div>
+          )}
+        </>
       )}
       <VideoPlayer 
         movie={playingMovie}

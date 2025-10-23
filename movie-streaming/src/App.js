@@ -13,11 +13,12 @@ import "./App.css";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   const renderPage = () => {
     switch (currentPage) {
       case "movies":
-        return <Movies />;
+        return <Movies selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />;
       case "rate":
         return <Rate />;
       case "community":
@@ -38,7 +39,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar 
+        currentPage={currentPage} 
+        setCurrentPage={setCurrentPage}
+        selectedGenre={selectedGenre}
+        setSelectedGenre={setSelectedGenre}
+      />
       <main style={{ paddingTop: "70px" }}>{renderPage()}</main>
       <Footer />
       <GlobalSearch />

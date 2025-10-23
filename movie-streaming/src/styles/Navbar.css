@@ -68,6 +68,20 @@
   display: inline-block;
 }
 
+.navbar-dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (min-width: 769px) {
+  .navbar-dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
 .dropdown-content {
   position: absolute;
   top: 100%;

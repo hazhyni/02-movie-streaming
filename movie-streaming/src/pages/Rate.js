@@ -12,8 +12,15 @@ const Rate = () => {
   const [selectedOption, setSelectedOption] = useState({});
   const [showConfetti, setShowConfetti] = useState(false);
   const [hoveredOption, setHoveredOption] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { movies } = moviesData;
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const polls = [
     {
@@ -69,6 +76,17 @@ const Rate = () => {
     const maxVotes = Math.max(...Object.values(pollVotes));
     return Object.keys(pollVotes).find(key => pollVotes[key] === maxVotes);
   };
+
+  if (isLoading) {
+    return (
+      <div className="rate-page">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading polls...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="rate-page">
