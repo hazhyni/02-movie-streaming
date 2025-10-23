@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import moviesData from "../data/movies.json";
 import "../styles/Navbar.css";
 
-const Navbar = ({ currentPage, setCurrentPage }) => {
+const Navbar = ({ currentPage, setCurrentPage, selectedGenre, setSelectedGenre }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -10,9 +10,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "m") {
         e.preventDefault();
-        // Trigger search modal on any page
         const searchEvent = new CustomEvent("openSearchModal");
         document.dispatchEvent(searchEvent);
+      }
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
       }
     };
 
@@ -20,15 +23,28 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
       if (!e.target.closest(".navbar-dropdown")) {
         setIsDropdownOpen(false);
       }
+      if (!e.target.closest(".navbar-container") && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("click", handleClickOutside);
+    window.addEventListener("resize", handleResize);
+    
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   return (
     <nav className="navbar">
@@ -47,15 +63,17 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
           >
             Home
           </button>
-          <div className="navbar-dropdown">
+          <div className="navbar-dropdown" onMouseLeave={() => window.innerWidth > 768 && setIsDropdownOpen(false)}>
             <button
               className={`navbar-item ${
                 currentPage === "movies" ? "active" : ""
               }`}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseEnter={() => window.innerWidth > 768 && setIsDropdownOpen(true)}
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="true"
             >
-              Genre ▼
+              Genre {isDropdownOpen ? '▲' : '▼'}
             </button>
             <div className={`dropdown-content ${isDropdownOpen ? "show" : ""}`}>
               <div className="dropdown-header">
@@ -65,6 +83,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 className="dropdown-item all-movies"
                 onClick={() => {
                   setCurrentPage("movies");
+                  setSelectedGenre && setSelectedGenre(null);
                   setIsMenuOpen(false);
                   setIsDropdownOpen(false);
                 }}
@@ -92,6 +111,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                     className="dropdown-item"
                     onClick={() => {
                       setCurrentPage("movies");
+                      setSelectedGenre && setSelectedGenre(genre.name);
                       setIsMenuOpen(false);
                       setIsDropdownOpen(false);
                     }}
@@ -167,8 +187,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             setIsMenuOpen(!isMenuOpen);
             setIsDropdownOpen(false);
           }}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
-          ☰
+          {isMenuOpen ? "✕" : "☰"}
         </button>
       </div>
     </nav>
