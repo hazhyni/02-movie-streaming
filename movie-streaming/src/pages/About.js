@@ -6,57 +6,62 @@ const About = () => {
     {
       icon: "🎬",
       title: "Unlimited Movies",
-      description: "Access thousands of movies across all genres"
+      description: "Access thousands of movies across all genres",
     },
     {
       icon: "📱",
       title: "Multi-Device",
-      description: "Watch on any device, anywhere, anytime"
+      description: "Watch on any device, anywhere, anytime",
     },
     {
       icon: "⭐",
       title: "Rate & Review",
-      description: "Share your opinions and discover new favorites"
+      description: "Share your opinions and discover new favorites",
     },
     {
       icon: "💬",
       title: "Community",
-      description: "Connect with fellow movie enthusiasts"
-    }
+      description: "Connect with fellow movie enthusiasts",
+    },
   ];
 
   const team = [
     {
       name: "Alex Johnson",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     },
     {
-      name: "Sarah Chen",
-      role: "Head of Content",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      name: "Hazhiyah Yumni",
+      role: "Developer",
+      image: "/img/logo.png",
     },
     {
       name: "Mike Rodriguez",
-      role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    }
+      role: "Marketing",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    },
   ];
 
   return (
     <div className="about-page">
       <div className="about-hero">
         <h1>About HyFlix</h1>
-        <p>Your ultimate destination for movie streaming and community engagement</p>
+        <p>
+          Your ultimate destination for movie streaming and community engagement
+        </p>
       </div>
 
       <div className="about-content">
         <section className="mission-section">
           <h2>🎯 Our Mission</h2>
           <p>
-            At HyFlix, we believe movies have the power to inspire, entertain, and bring people together. 
-            Our mission is to create the ultimate streaming platform where movie lovers can discover, 
-            watch, and discuss their favorite films in a vibrant community environment.
+            At HyFlix, we believe movies have the power to inspire, entertain,
+            and bring people together. Our mission is to create the ultimate
+            streaming platform where movie lovers can discover, watch, and
+            discuss their favorite films in a vibrant community environment.
           </p>
         </section>
 
@@ -100,7 +105,11 @@ const About = () => {
           <div className="team-grid">
             {team.map((member, index) => (
               <div key={index} className="team-card">
-                <img src={member.image} alt={member.name} className="team-photo" />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="team-photo"
+                />
                 <h3>{member.name}</h3>
                 <p>{member.role}</p>
               </div>
