@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/CommunityFeatures.css';
+import React from "react";
+import "../styles/CommunityFeatures.css";
 
 const CommunityFeatures = () => {
   return (
@@ -9,7 +9,10 @@ const CommunityFeatures = () => {
         <div className="section-content">
           <div className="content-left">
             <h2>Rate & Review Movies</h2>
-            <p>Share your opinions and discover what others think about your favorite films</p>
+            <p>
+              Share your opinions and discover what others think about your
+              favorite films
+            </p>
             <div className="feature-list">
               <div className="feature-item">
                 <span className="icon">⭐</span>
@@ -28,7 +31,10 @@ const CommunityFeatures = () => {
           <div className="content-right">
             <div className="interactive-demo rating-demo">
               <div className="movie-card-demo">
-                <img src="https://image.tmdb.org/t/p/w300/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Movie" />
+                <img
+                  src="https://image.tmdb.org/t/p/w300/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg"
+                  alt="Movie"
+                />
                 <div className="rating-overlay">
                   <div className="stars-interactive">
                     <span className="star-big">⭐</span>
@@ -42,8 +48,12 @@ const CommunityFeatures = () => {
               </div>
               <div className="floating-reviews">
                 <div className="review-bubble bubble-1">"Epic movie! 🔥"</div>
-                <div className="review-bubble bubble-2">"Best superhero film"</div>
-                <div className="review-bubble bubble-3">"Amazing visuals! ⭐⭐⭐⭐⭐"</div>
+                <div className="review-bubble bubble-2">
+                  "Best superhero film"
+                </div>
+                <div className="review-bubble bubble-3">
+                  "Amazing visuals! ⭐⭐⭐⭐⭐"
+                </div>
               </div>
             </div>
           </div>
@@ -89,7 +99,10 @@ const CommunityFeatures = () => {
           </div>
           <div className="content-right">
             <h2>Live Community Experience</h2>
-            <p>Connect with movie fans worldwide and share the excitement in real-time</p>
+            <p>
+              Connect with movie fans worldwide and share the excitement in
+              real-time
+            </p>
             <div className="feature-list">
               <div className="feature-item">
                 <span className="icon">💬</span>
@@ -108,53 +121,55 @@ const CommunityFeatures = () => {
         </div>
       </section>
 
-      {/* Section 3: Rewards & Achievements */}
-      <section className="feature-section rewards-section">
+      {/* Section 3: Earn Rewards */}
+      <section className="feature-section rating-section">
         <div className="section-content">
           <div className="content-left">
-            <h2>Earn Rewards & Achievements</h2>
-            <p>Get recognized for your contributions and unlock exclusive content</p>
+            <h2>Unlock Cinema Rewards</h2>
+            <p>
+              Turn your movie passion into valuable rewards and exclusive experiences
+            </p>
             <div className="feature-list">
               <div className="feature-item">
-                <span className="icon">🏆</span>
-                <span>Unlock achievement badges</span>
+                <span className="icon">💳</span>
+                <span>Cashback on purchases</span>
               </div>
               <div className="feature-item">
-                <span className="icon">🎁</span>
-                <span>Exclusive content access</span>
+                <span className="icon">🎆</span>
+                <span>Exclusive merchandise</span>
               </div>
               <div className="feature-item">
-                <span className="icon">⭐</span>
-                <span>Level up your profile</span>
+                <span className="icon">🎥</span>
+                <span>Behind-the-scenes content</span>
               </div>
             </div>
           </div>
           <div className="content-right">
-            <div className="interactive-demo rewards-demo">
-              <div className="achievement-board">
-                <h3>Your Achievements</h3>
-                <div className="badges-grid">
-                  <div className="badge-item shine">
-                    <span className="badge-icon">🥇</span>
-                    <span className="badge-name">Top Reviewer</span>
+            <div className="interactive-demo rating-demo">
+              <div className="movie-card-demo">
+                <img
+                  src="https://image.tmdb.org/t/p/w300/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg"
+                  alt="Rewards"
+                />
+                <div className="rating-overlay">
+                  <div className="stars-interactive">
+                    <span className="star-big">💳</span>
+                    <span className="star-big">🎆</span>
+                    <span className="star-big">🎥</span>
+                    <span className="star-big">🔥</span>
+                    <span className="star-big">🏅</span>
                   </div>
-                  <div className="badge-item shine delay-1">
-                    <span className="badge-icon">🎬</span>
-                    <span className="badge-name">Movie Buff</span>
-                  </div>
-                  <div className="badge-item shine delay-2">
-                    <span className="badge-icon">💬</span>
-                    <span className="badge-name">Chat Master</span>
-                  </div>
-                  <div className="badge-item locked">
-                    <span className="badge-icon">🔒</span>
-                    <span className="badge-name">Coming Soon</span>
-                  </div>
+                  <div className="rating-text">Gold Member (2,500 points)</div>
                 </div>
               </div>
-              <div className="progress-bar">
-                <div className="progress-fill"></div>
-                <span className="progress-text">Level 5 - 750/1000 XP</span>
+              <div className="floating-reviews">
+                <div className="review-bubble bubble-1">"Cashback Earned! 💳"</div>
+                <div className="review-bubble bubble-2">
+                  "Exclusive Item Unlocked!"
+                </div>
+                <div className="review-bubble bubble-3">
+                  "Bonus Content Available! 🎥🎆"
+                </div>
               </div>
             </div>
           </div>

@@ -153,64 +153,6 @@ const Welcome = ({ setCurrentPage }) => {
           </div>
         </div>
       </div>
-
-      <div className="features">
-        <div className="feature">
-          <div className="feature-icon-animated">
-            <div className="devices-demo">
-              <div className="device phone">📱</div>
-              <div className="device tablet">💻</div>
-              <div className="device tv">📺</div>
-              <div className="streaming-waves">
-                <div className="wave"></div>
-                <div className="wave"></div>
-                <div className="wave"></div>
-              </div>
-            </div>
-          </div>
-          <h3>Watch on any device</h3>
-          <p>Stream on your phone, tablet, laptop, and TV</p>
-        </div>
-        <div className="feature">
-          <div className="feature-icon-animated">
-            <div className="download-demo">
-              <div className="movie-poster">🎬</div>
-              <div className="download-path">
-                <div className="download-dot dot-1"></div>
-                <div className="download-dot dot-2"></div>
-                <div className="download-dot dot-3"></div>
-                <div className="download-dot dot-4"></div>
-              </div>
-              <div className="phone-device">📱</div>
-              <div className="download-bar">
-                <div className="download-fill"></div>
-                <span className="download-percent">Downloaded</span>
-              </div>
-            </div>
-          </div>
-          <h3>Download for offline</h3>
-          <p>Save your favorites to watch offline</p>
-        </div>
-        <div className="feature">
-          <div className="feature-icon-animated">
-            <div className="profiles-demo">
-              <div className="main-profile">👤</div>
-              <div className="profile-avatars">
-                <div className="avatar kid1">👶</div>
-                <div className="avatar kid2">👧</div>
-                <div className="avatar adult">👨</div>
-              </div>
-              <div className="profile-selector">
-                <div className="selector-dot active"></div>
-                <div className="selector-dot"></div>
-                <div className="selector-dot"></div>
-              </div>
-            </div>
-          </div>
-          <h3>Create profiles</h3>
-          <p>Send kids on adventures with their favorite characters</p>
-        </div>
-      </div>
     </div>
   );
 };
