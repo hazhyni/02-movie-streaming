@@ -11,7 +11,7 @@ const Community = () => {
   const [showMovieDropdown, setShowMovieDropdown] = useState(false);
   const [movieSearch, setMovieSearch] = useState("");
   const [selectedMovieData, setSelectedMovieData] = useState(null);
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [discussionPage, setDiscussionPage] = useState(1);
@@ -23,17 +23,23 @@ const Community = () => {
   const { reviews } = reviewsData;
 
   const handleLike = (id) => {
-    setDiscussions(prev => prev.map(post => 
-      post.id === id 
-        ? { ...post, liked: !post.liked, likes: post.liked ? post.likes - 1 : post.likes + 1 }
-        : post
-    ));
+    setDiscussions((prev) =>
+      prev.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              liked: !post.liked,
+              likes: post.liked ? post.likes - 1 : post.likes + 1,
+            }
+          : post
+      )
+    );
   };
 
   const handlePost = () => {
     if (!newPost.trim() || !selectedMovie) return;
-    
-    const movie = movies.find(m => m.id == selectedMovie);
+
+    const movie = movies.find((m) => m.id === selectedMovie);
     const post = {
       id: Date.now(),
       user: "You",
@@ -44,10 +50,10 @@ const Community = () => {
       likes: 0,
       replies: 0,
       time: "Just now",
-      liked: false
+      liked: false,
     };
-    
-    setDiscussions(prev => [post, ...prev]);
+
+    setDiscussions((prev) => [post, ...prev]);
     setNewPost("");
     setSelectedMovie("");
     setSelectedMovieData(null);
@@ -56,54 +62,38 @@ const Community = () => {
     setDiscussionPage(1);
   };
 
-  const filteredMovies = movies.filter(movie => {
-    const search = movieSearch.toLowerCase();
-    return movie.title.toLowerCase().includes(search) ||
-           movie.genre.toLowerCase().includes(search) ||
-           movie.year.toString().includes(search);
-  }).sort((a, b) => {
-    const search = movieSearch.toLowerCase();
-    const aTitle = a.title.toLowerCase().includes(search);
-    const bTitle = b.title.toLowerCase().includes(search);
-    if (aTitle && !bTitle) return -1;
-    if (!aTitle && bTitle) return 1;
-    return b.rating - a.rating;
-  });
+  const filteredMovies = movies
+    .filter((movie) => {
+      const search = movieSearch.toLowerCase();
+      return (
+        movie.title.toLowerCase().includes(search) ||
+        movie.genre.toLowerCase().includes(search) ||
+        movie.year.toString().includes(search)
+      );
+    })
+    .sort((a, b) => {
+      const search = movieSearch.toLowerCase();
+      const aTitle = a.title.toLowerCase().includes(search);
+      const bTitle = b.title.toLowerCase().includes(search);
+      if (aTitle && !bTitle) return -1;
+      if (!aTitle && bTitle) return 1;
+      return b.rating - a.rating;
+    });
 
   const handleMovieSelect = (movie) => {
     setSelectedMovie(movie.id);
     setSelectedMovieData(movie);
     setMovieSearch("");
     setShowMovieDropdown(false);
-    setHighlightedIndex(-1);
   };
 
   const clearSelection = () => {
     setSelectedMovie("");
     setSelectedMovieData(null);
     setMovieSearch("");
-    setHighlightedIndex(-1);
   };
 
-  const handleKeyDown = (e) => {
-    if (!showMovieDropdown || filteredMovies.length === 0) return;
-    
-    const maxIndex = Math.min(filteredMovies.length - 1, 7);
-    
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setHighlightedIndex(prev => prev < maxIndex ? prev + 1 : 0);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setHighlightedIndex(prev => prev > 0 ? prev - 1 : maxIndex);
-    } else if (e.key === 'Enter' && highlightedIndex >= 0) {
-      e.preventDefault();
-      handleMovieSelect(filteredMovies[highlightedIndex]);
-    } else if (e.key === 'Escape') {
-      setShowMovieDropdown(false);
-      setHighlightedIndex(-1);
-    }
-  };
+
 
   const renderDiscussions = () => (
     <div className="discussions-section">
@@ -112,30 +102,52 @@ const Community = () => {
         <div className="movie-selector-container">
           {selectedMovieData ? (
             <div className="selected-movie">
-              <img src={selectedMovieData.poster} alt={selectedMovieData.title} className="selected-thumb" />
+              <img
+                src={selectedMovieData.poster}
+                alt={selectedMovieData.title}
+                className="selected-thumb"
+              />
               <div className="selected-info">
-                <span className="selected-title">{selectedMovieData.title}</span>
-                <span className="selected-meta">{selectedMovieData.year} • {selectedMovieData.genre} • ⭐ {selectedMovieData.rating}</span>
+                <span className="selected-title">
+                  {selectedMovieData.title}
+                </span>
+                <span className="selected-meta">
+                  {selectedMovieData.year} • {selectedMovieData.genre} • ⭐{" "}
+                  {selectedMovieData.rating}
+                </span>
               </div>
-              <button className="clear-btn" onClick={clearSelection}>✕</button>
+              <button className="clear-btn" onClick={clearSelection}>
+                ✕
+              </button>
             </div>
           ) : (
             <>
-              <button 
+              <button
                 className="movie-selector-btn"
                 onClick={() => setShowMovieDropdown(true)}
               >
                 🎬 Select a movie to discuss
               </button>
-              
+
               {showMovieDropdown && (
-                <div className="movie-modal-overlay" onClick={() => setShowMovieDropdown(false)}>
-                  <div className="movie-modal" onClick={(e) => e.stopPropagation()}>
+                <div
+                  className="movie-modal-overlay"
+                  onClick={() => setShowMovieDropdown(false)}
+                >
+                  <div
+                    className="movie-modal"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="modal-header">
                       <h3>🎬 Choose a Movie</h3>
-                      <button className="close-modal" onClick={() => setShowMovieDropdown(false)}>✕</button>
+                      <button
+                        className="close-modal"
+                        onClick={() => setShowMovieDropdown(false)}
+                      >
+                        ✕
+                      </button>
                     </div>
-                    
+
                     <div className="search-container">
                       <input
                         type="text"
@@ -146,10 +158,10 @@ const Community = () => {
                         autoFocus
                       />
                     </div>
-                    
+
                     <div className="movies-slider">
                       {filteredMovies.map((movie) => (
-                        <div 
+                        <div
                           key={movie.id}
                           className="movie-card-slider"
                           onClick={() => handleMovieSelect(movie)}
@@ -165,7 +177,9 @@ const Community = () => {
                             <div className="card-meta">
                               <span className="card-year">{movie.year}</span>
                               <span className="card-genre">{movie.genre}</span>
-                              <span className="card-rating">⭐ {movie.rating}</span>
+                              <span className="card-rating">
+                                ⭐ {movie.rating}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -183,24 +197,32 @@ const Community = () => {
           placeholder="Share your thoughts about this movie..."
           className="post-input"
         />
-        <button onClick={handlePost} className="post-btn" disabled={!newPost.trim() || !selectedMovie}>
-          📝 
-          Post Discussion
+        <button
+          onClick={handlePost}
+          className="post-btn"
+          disabled={!newPost.trim() || !selectedMovie}
+        >
+          📝 Post Discussion
         </button>
       </div>
 
       <div className="discussions-container">
         <div className="discussions-header">
           <h3>💬 Recent Discussions</h3>
-          <span className="discussions-count">{discussions.length} discussions</span>
+          <span className="discussions-count">
+            {discussions.length} discussions
+          </span>
         </div>
-        
+
         <div className="discussions-list">
           {(() => {
             const startIndex = (discussionPage - 1) * discussionsPerPage;
-            const paginatedDiscussions = discussions.slice(startIndex, startIndex + discussionsPerPage);
-            
-            return paginatedDiscussions.map(post => (
+            const paginatedDiscussions = discussions.slice(
+              startIndex,
+              startIndex + discussionsPerPage
+            );
+
+            return paginatedDiscussions.map((post) => (
               <div key={post.id} className="discussion-card">
                 <div className="discussion-header">
                   <div className="user-info">
@@ -215,8 +237,8 @@ const Community = () => {
                 <h4 className="discussion-title">{post.title}</h4>
                 <p className="discussion-content">{post.content}</p>
                 <div className="discussion-actions">
-                  <button 
-                    className={`action-btn ${post.liked ? 'liked' : ''}`}
+                  <button
+                    className={`action-btn ${post.liked ? "liked" : ""}`}
                     onClick={() => handleLike(post.id)}
                   >
                     ❤️ {post.likes}
@@ -226,34 +248,41 @@ const Community = () => {
                 </div>
               </div>
             ));
-          })()
-        }
+          })()}
         </div>
-        
+
         {Math.ceil(discussions.length / discussionsPerPage) > 1 && (
           <div className="pagination">
-            <button 
-              className="page-btn" 
+            <button
+              className="page-btn"
               disabled={discussionPage === 1}
-              onClick={() => setDiscussionPage(prev => prev - 1)}
+              onClick={() => setDiscussionPage((prev) => prev - 1)}
             >
               ← Previous
             </button>
-            
-            {Array.from({ length: Math.ceil(discussions.length / discussionsPerPage) }, (_, i) => i + 1).map(page => (
+
+            {Array.from(
+              { length: Math.ceil(discussions.length / discussionsPerPage) },
+              (_, i) => i + 1
+            ).map((page) => (
               <button
                 key={page}
-                className={`page-btn ${discussionPage === page ? 'active' : ''}`}
+                className={`page-btn ${
+                  discussionPage === page ? "active" : ""
+                }`}
                 onClick={() => setDiscussionPage(page)}
               >
                 {page}
               </button>
             ))}
-            
-            <button 
-              className="page-btn" 
-              disabled={discussionPage === Math.ceil(discussions.length / discussionsPerPage)}
-              onClick={() => setDiscussionPage(prev => prev + 1)}
+
+            <button
+              className="page-btn"
+              disabled={
+                discussionPage ===
+                Math.ceil(discussions.length / discussionsPerPage)
+              }
+              onClick={() => setDiscussionPage((prev) => prev + 1)}
             >
               Next →
             </button>
@@ -267,11 +296,19 @@ const Community = () => {
     <div className="trending-section">
       <h3>🔥 Trending Topics</h3>
       <div className="trending-list">
-        {["#AvengersEndgame", "#JokerMovie", "#DunePartTwo", "#TopGunMaverick", "#BlackPanther"].map((tag, index) => (
+        {[
+          "#AvengersEndgame",
+          "#JokerMovie",
+          "#DunePartTwo",
+          "#TopGunMaverick",
+          "#BlackPanther",
+        ].map((tag, index) => (
           <div key={tag} className="trending-item">
             <span className="trend-rank">#{index + 1}</span>
             <span className="trend-tag">{tag}</span>
-            <span className="trend-count">{Math.floor(Math.random() * 1000) + 100} posts</span>
+            <span className="trend-count">
+              {Math.floor(Math.random() * 1000) + 100} posts
+            </span>
           </div>
         ))}
       </div>
@@ -279,17 +316,20 @@ const Community = () => {
   );
 
   const renderReviews = () => {
-    const filteredReviews = reviews.filter(review => {
+    const filteredReviews = reviews.filter((review) => {
       if (selectedGenre === "All") return true;
-      const movie = movies.find(m => m.id === review.movieId);
+      const movie = movies.find((m) => m.id === review.movieId);
       return movie?.genre === selectedGenre;
     });
 
     const totalPages = Math.ceil(filteredReviews.length / reviewsPerPage);
     const startIndex = (currentPage - 1) * reviewsPerPage;
-    const paginatedReviews = filteredReviews.slice(startIndex, startIndex + reviewsPerPage);
+    const paginatedReviews = filteredReviews.slice(
+      startIndex,
+      startIndex + reviewsPerPage
+    );
 
-    const genres = ["All", ...new Set(movies.map(m => m.genre))];
+    const genres = ["All", ...new Set(movies.map((m) => m.genre))];
 
     return (
       <div className="reviews-section">
@@ -297,10 +337,12 @@ const Community = () => {
           <div className="genre-sidebar">
             <h4>🎭 Genres</h4>
             <div className="genre-list">
-              {genres.map(genre => (
+              {genres.map((genre) => (
                 <button
                   key={genre}
-                  className={`genre-btn ${selectedGenre === genre ? 'active' : ''}`}
+                  className={`genre-btn ${
+                    selectedGenre === genre ? "active" : ""
+                  }`}
                   onClick={() => {
                     setSelectedGenre(genre);
                     setCurrentPage(1);
@@ -311,56 +353,68 @@ const Community = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="reviews-content">
             <div className="reviews-header">
               <h3>⭐ Latest Reviews</h3>
-              <span className="reviews-count">{filteredReviews.length} reviews</span>
+              <span className="reviews-count">
+                {filteredReviews.length} reviews
+              </span>
             </div>
-            
+
             <div className="reviews-grid">
-              {paginatedReviews.map(review => {
-                const movie = movies.find(m => m.id === review.movieId);
+              {paginatedReviews.map((review) => {
+                const movie = movies.find((m) => m.id === review.movieId);
                 return (
                   <div key={review.id} className="review-card">
-                    <img src={movie?.poster} alt={movie?.title} className="review-poster" />
+                    <img
+                      src={movie?.poster}
+                      alt={movie?.title}
+                      className="review-poster"
+                    />
                     <div className="review-info">
                       <h4>{movie?.title}</h4>
                       <div className="rating-stars">
                         {"⭐".repeat(Math.floor(review.rating / 2))}
                       </div>
                       <p className="review-snippet">{review.content}</p>
-                      <span className="reviewer">{review.avatar} {review.user}</span>
+                      <span className="reviewer">
+                        {review.avatar} {review.user}
+                      </span>
                     </div>
                   </div>
                 );
               })}
             </div>
-            
+
             {totalPages > 1 && (
               <div className="pagination">
-                <button 
-                  className="page-btn" 
+                <button
+                  className="page-btn"
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(prev => prev - 1)}
+                  onClick={() => setCurrentPage((prev) => prev - 1)}
                 >
                   ← Previous
                 </button>
-                
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <button
-                    key={page}
-                    className={`page-btn ${currentPage === page ? 'active' : ''}`}
-                    onClick={() => setCurrentPage(page)}
-                  >
-                    {page}
-                  </button>
-                ))}
-                
-                <button 
-                  className="page-btn" 
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      className={`page-btn ${
+                        currentPage === page ? "active" : ""
+                      }`}
+                      onClick={() => setCurrentPage(page)}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+
+                <button
+                  className="page-btn"
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(prev => prev + 1)}
+                  onClick={() => setCurrentPage((prev) => prev + 1)}
                 >
                   Next →
                 </button>
@@ -380,19 +434,19 @@ const Community = () => {
       </div>
 
       <div className="community-tabs">
-        <button 
+        <button
           className={`tab ${activeTab === "discussions" ? "active" : ""}`}
           onClick={() => setActiveTab("discussions")}
         >
           💬 Discussions
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === "trending" ? "active" : ""}`}
           onClick={() => setActiveTab("trending")}
         >
           🔥 Trending
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === "reviews" ? "active" : ""}`}
           onClick={() => setActiveTab("reviews")}
         >

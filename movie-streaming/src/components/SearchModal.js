@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from './Button';
 import moviesData from '../data/movies.json';
 import '../styles/SearchModal.css';
@@ -12,7 +12,7 @@ const SearchModal = ({ isOpen, onClose, onMovieSelect }) => {
   
   const { movies, genres } = moviesData;
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     if (!searchQuery.trim() && selectedGenre === 'All') {
       setSearchResults([]);
       return;
@@ -34,7 +34,7 @@ const SearchModal = ({ isOpen, onClose, onMovieSelect }) => {
       setSearchResults(results);
       setIsSearching(false);
     }, 300);
-  };
+  }, [searchQuery, selectedGenre, movies]);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
