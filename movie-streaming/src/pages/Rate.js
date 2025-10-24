@@ -74,7 +74,7 @@ const Rate = () => {
   const getWinner = (pollId) => {
     const pollVotes = votes[pollId] || {};
     const maxVotes = Math.max(...Object.values(pollVotes));
-    return Object.keys(pollVotes).find(key => pollVotes[key] === maxVotes);
+    return Object.keys(pollVotes).find(key => pollVotes[key] = maxVotes);
   };
 
   if (isLoading) {
@@ -113,7 +113,7 @@ const Rate = () => {
                   const movieVotes = votes[poll.id]?.[movie.id] || 0;
                   const isVoted = hasVoted[poll.id];
                   const isSelected = selectedOption[poll.id] === movie.id;
-                  const isWinner = winner == movie.id && isVoted;
+                  const isWinner = winner === movie.id && isVoted;
                   const isHovered = hoveredOption === `${poll.id}-${movie.id}`;
                   
                   return (
