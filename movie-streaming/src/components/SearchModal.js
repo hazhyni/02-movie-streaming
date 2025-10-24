@@ -59,7 +59,7 @@ const SearchModal = ({ isOpen, onClose, onMovieSelect }) => {
     if (searchQuery || selectedGenre !== 'All') {
       handleSearch();
     }
-  }, [selectedGenre]);
+  }, [selectedGenre,searchQuery, handleSearch]);
 
   useEffect(() => {
     if (isOpen) {
