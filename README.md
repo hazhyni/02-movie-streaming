@@ -1,7 +1,5 @@
 # 🎬 Hyflix — Movie Streaming Platform
 
-![Hyflix Banner](https://hyflix-yumni.vercel.app/banner.png)
-
 A modern **movie streaming website** built with **React**, designed to deliver a clean, responsive, and engaging user experience for discovering, rating, and reviewing movies.  
 
 🌐 **Live Demo:** [https://hyflix-yumni.vercel.app](https://hyflix-yumni.vercel.app)
